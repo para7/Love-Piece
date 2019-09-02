@@ -11,7 +11,7 @@ public class LoverMover
         this.rigidbody2D = _rigidbody2D;
     }
 
-    public void Walk(Vector2 moveDirection)
+    public void Move(Vector2 moveDirection)
     {
         rigidbody2D.velocity = Time.deltaTime * moveDirection;
     }
