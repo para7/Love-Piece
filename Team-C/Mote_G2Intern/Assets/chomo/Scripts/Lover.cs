@@ -35,7 +35,7 @@ public class Lover : MonoBehaviour
             var direction = collision.gameObject.transform.position
                            - transform.position;
 
-            m_moveDirection = direction;
+            m_moveDirection = direction.normalized;
         }
     }
     */
