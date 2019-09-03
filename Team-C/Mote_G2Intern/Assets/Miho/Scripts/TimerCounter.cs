@@ -22,7 +22,6 @@ public class TimerCounter : MonoBehaviour {
         while (m_Time> 0)
         {
             m_Time--;
-            //イベントを発行
             timerSubject.OnNext(m_Time);
             yield return new WaitForSeconds(1);
         }
