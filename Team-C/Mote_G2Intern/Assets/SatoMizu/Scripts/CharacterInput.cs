@@ -6,10 +6,11 @@ using System.Collections;
 public class CharacterInput : MonoBehaviour {
     private Vector2 m_cursorPos;                         // カーソルのスクリーン座標
     private float angle;
-    [SerializeField] private GameObject m_obj;      // キャラクター
+    private Transform m_obj;      // キャラクター
 
     // Use this for initialization
     void Start () {
+        m_obj = transform;      // transformを格納
         m_cursorPos.Set(0.0f, 0.0f);
         angle = 0.0f;
     }
@@ -24,7 +25,7 @@ public class CharacterInput : MonoBehaviour {
         m_cursorPos = new Vector2(screenPos.x, screenPos.y);
 
         // キャラクターの座標更新
-        Vector2 characterPosition = new Vector2(m_obj.transform.position.x, m_obj.transform.position.y);
+        Vector2 characterPosition = new Vector2(m_obj.position.x, m_obj.position.y);
 
         // キャラクター座標とカーソル座標からベクトル生成
         Vector3 cursolVector = -(characterPosition - m_cursorPos);
