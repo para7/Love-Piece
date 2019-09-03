@@ -12,7 +12,9 @@ public class Lover : MonoBehaviour
 
     [SerializeField] private int m_scoreValue = 1;
 
-    private bool m_isStopped; 
+    private bool m_isStopped;
+
+    private bool m_isArea;
 
     //呼び出し時に方向を代入させる
     [HideInInspector] public Vector2 m_moveDirection = Vector2.right;
@@ -29,6 +31,7 @@ public class Lover : MonoBehaviour
         LoverManager.Instance.AddList(this);
 
         m_isStopped = false;
+        m_isArea = false;
     }
 
     public void LoverUpdate()
@@ -73,6 +76,7 @@ public class Lover : MonoBehaviour
             _loverMover.Move(Vector2.zero);
 
             m_isStopped = true;
+            m_isArea = true;
             /// <summary>
             /// m_stopTime秒経ったらfalseにする
             /// </summary>
@@ -91,18 +95,36 @@ public class Lover : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && 
-            m_isStopped == false)
+        if (!collision.gameObject.CompareTag("Player"))
         {
-            SetMoveDirection(isApproach: true);
+            return;
         }
+
+        if (m_isStopped)
+        {
+            return;
+        }
+
+        if (m_isArea)
+        {
+            return;
+        }
+
+        SetMoveDirection(isApproach: true);
     }
+    
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             SetMoveDirection(isApproach: false);
         }
+
+        if (collision.gameObject.CompareTag("Stop"))
+        {
+            m_isArea = false;
+        }
     }
+
     #endregion
 }
