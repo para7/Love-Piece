@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UniRx;
 using System;
 
@@ -12,10 +10,14 @@ public class Lover : MonoBehaviour
 
     [SerializeField] private double m_stopTime = 1.5;
 
+    [SerializeField] private int m_scoreValue = 1;
+
     private bool m_isStopped; 
 
     //呼び出し時に方向を代入させる
     [HideInInspector] public Vector2 m_moveDirection = Vector2.right;
+
+    private Vector3 m_PlayerPos = new Vector3(0, 0, 0);
 
     private void Awake()
     {
@@ -29,7 +31,7 @@ public class Lover : MonoBehaviour
         m_isStopped = false;
     }
 
-    private void LoverUpdate()
+    public void LoverUpdate()
     {
         /// <summary>
         /// 停止フラグがtrueの場合、
@@ -43,34 +45,64 @@ public class Lover : MonoBehaviour
         _loverMover.Move(m_moveDirection * m_moveSpeed);
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void SetMoveDirection(bool isApproach)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        var direction = Vector3.zero;
+
+        if (isApproach)
         {
-            var direction = collision.gameObject.transform.position
-                           - transform.position;
-
-            m_moveDirection = direction.normalized;
-
-            return;
+            direction = m_PlayerPos - transform.position;
+        }
+        else
+        {
+            direction = transform.position - m_PlayerPos;
         }
 
+        m_moveDirection = direction.normalized;
+    }
+
+    #region 当たり判定
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         /// <summary>
         /// プレイヤーに一定の距離近づいたら、
         /// Loverの動きをしばらく止める
         /// </summary>
         if (collision.gameObject.CompareTag("Stop"))
-        {
-            m_isStopped = true;
+        {            
+            _loverMover.Move(Vector2.zero);
 
+            m_isStopped = true;
             /// <summary>
             /// m_stopTime秒経ったらfalseにする
             /// </summary>
             Observable.Timer(TimeSpan.FromSeconds(m_stopTime)).Subscribe(_ =>
             {
                 m_isStopped = false;
+                SetMoveDirection(isApproach: false);
             }).AddTo(this);
         }
+
+        if (collision.gameObject.CompareTag("ResultArea"))
+        {
+            ScoreCounter.GetScore(m_scoreValue);
+        }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && 
+            m_isStopped == false)
+        {
+            SetMoveDirection(isApproach: true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            SetMoveDirection(isApproach: false);
+        }
+    }
+    #endregion
 }
