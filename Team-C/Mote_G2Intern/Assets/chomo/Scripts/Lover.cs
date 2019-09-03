@@ -10,6 +10,8 @@ public class Lover : MonoBehaviour
 
     [SerializeField] private double m_stopTime = 1.5;
 
+    [SerializeField] private int m_scoreValue = 1;
+
     private bool m_isStopped; 
 
     //呼び出し時に方向を代入させる
@@ -79,6 +81,11 @@ public class Lover : MonoBehaviour
                 m_isStopped = false;
                 SetMoveDirection(isApproach: false);
             }).AddTo(this);
+        }
+
+        if (collision.gameObject.CompareTag("ResultArea"))
+        {
+            ScoreCounter.GetScore(m_scoreValue);
         }
     }
 
