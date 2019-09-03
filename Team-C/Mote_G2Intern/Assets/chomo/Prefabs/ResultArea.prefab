@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 58620050500550446}
   m_Layer: 0
   m_Name: ResultArea
-  m_TagString: ReaultArea
+  m_TagString: ResultArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
