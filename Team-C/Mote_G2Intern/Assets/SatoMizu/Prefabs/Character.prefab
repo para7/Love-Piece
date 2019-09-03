@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4170161892645510}
   - component: {fileID: 212337726962379352}
   - component: {fileID: 114117448646575776}
+  - component: {fileID: 81053938330719466}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -128,6 +129,13 @@ PolygonCollider2D:
       - {x: 0.01, y: -2.48}
       - {x: 0.14, y: -2.19}
       - {x: 0.38, y: -1.67}
+--- !u!81 &81053938330719466
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076441154506006}
+  m_Enabled: 1
 --- !u!114 &114117448646575776
 MonoBehaviour:
   m_ObjectHideFlags: 1
