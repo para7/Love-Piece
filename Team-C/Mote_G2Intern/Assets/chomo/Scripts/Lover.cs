@@ -6,7 +6,7 @@ public class Lover : MonoBehaviour
 {
     private LoverMover _loverMover;
 
-    [SerializeField] private float m_moveSpeed;
+    [SerializeField] private float m_moveSpeed = 100f;
 
     //呼び出し時に方向を代入させる
     [HideInInspector] public Vector2 m_moveDirection = Vector2.right;
@@ -18,10 +18,15 @@ public class Lover : MonoBehaviour
 
     private void Start()
     {
-        LoverManager.Instance.AddList(this);
+       // LoverManager.Instance.AddList(this);
     }
 
     private void LoverUpdate()
+    {
+        _loverMover.Move(m_moveDirection * m_moveSpeed);
+    }
+
+    private void FixedUpdate()
     {
         _loverMover.Move(m_moveDirection * m_moveSpeed);
     }
