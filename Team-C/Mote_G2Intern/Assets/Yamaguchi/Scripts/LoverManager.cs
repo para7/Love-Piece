@@ -4,7 +4,7 @@ using UnityEngine;
 public class LoverManager : MonoBehaviour {
     public static LoverManager Instance;
 
-    List<Lover> m_Lovers;
+    List<Lover> m_Lovers = new List<Lover>();
 
     void Awake()
     {
@@ -22,8 +22,13 @@ public class LoverManager : MonoBehaviour {
     {
         m_Lovers.Add(_Lover);
     }
+
     // Update is called once per frame
-    void Update () {
-		
+    private void Update ()
+    {
+		foreach(var lover in m_Lovers)
+        {
+            lover.LoverUpdate();
+        }
 	}
 }
