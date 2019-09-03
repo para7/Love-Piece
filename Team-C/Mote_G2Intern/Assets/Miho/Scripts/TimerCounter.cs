@@ -10,6 +10,8 @@ public class TimerCounter : MonoBehaviour {
 
     public IObservable<int> OnTimeChanged { get { return timerSubject; } }
 
+    [SerializeField] private int m_Time;
+
     private void Start()
     {
         StartCoroutine(TimerCoroutine());
@@ -17,12 +19,11 @@ public class TimerCounter : MonoBehaviour {
 
     IEnumerator TimerCoroutine()
     {
-        var time = 10;
-        while (time > 0)
+        while (m_Time> 0)
         {
-            time--;
+            m_Time--;
             //イベントを発行
-            timerSubject.OnNext(time);
+            timerSubject.OnNext(m_Time);
             yield return new WaitForSeconds(1);
         }
         FadeManager.Instance.LoadScene("ResultScene", 2.0f);
