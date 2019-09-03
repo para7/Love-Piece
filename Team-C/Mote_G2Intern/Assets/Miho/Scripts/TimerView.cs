@@ -11,7 +11,7 @@ public class TimerView : MonoBehaviour {
 
     void Start()
     {
-        m_TimeCounter.OnTimeChanged.Subscribe(time => m_CounterText.text = time.ToString());
+        m_TimeCounter.OnTimeChanged.Subscribe(time => m_CounterText.text = "残り時間:"+time.ToString());
     }
 	
 }
