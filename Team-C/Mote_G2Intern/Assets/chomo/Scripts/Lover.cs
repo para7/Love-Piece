@@ -8,6 +8,8 @@ public class Lover : MonoBehaviour
 
     [SerializeField] private float m_moveSpeed = 100f;
 
+    [SerializeField] private float m_approachSpeed = 100f;
+
     [SerializeField] private double m_stopTime = 1.5;
 
     [SerializeField] private int m_scoreValue = 1;
@@ -50,18 +52,14 @@ public class Lover : MonoBehaviour
 
     private void SetMoveDirection(bool isApproach)
     {
-        var direction = Vector3.zero;
-
-        if (isApproach)
+        var direction = m_PlayerPos - transform.position;
+        
+        if(!isApproach)
         {
-            direction = m_PlayerPos - transform.position;
-        }
-        else
-        {
-            direction = transform.position - m_PlayerPos;
+            direction *= -1;
         }
 
-        m_moveDirection = direction.normalized;
+        m_moveDirection = direction.normalized * m_approachSpeed;
     }
 
     #region 当たり判定
