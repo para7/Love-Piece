@@ -32,6 +32,8 @@ public class Lover : MonoBehaviour
     {
         LoverManager.Instance.AddList(this);
 
+        m_moveDirection *= m_moveSpeed;
+
         m_isStopped = false;
         m_isArea = false;
     }
@@ -47,19 +49,21 @@ public class Lover : MonoBehaviour
             return;
         }
 
-        _loverMover.Move(m_moveDirection * m_moveSpeed);
+        _loverMover.Move(m_moveDirection);
     }
 
     private void SetMoveDirection(bool isApproach)
     {
         var direction = m_PlayerPos - transform.position;
         
-        if(!isApproach)
+        if(isApproach)
         {
-            direction *= -1;
+            m_moveDirection = direction.normalized * m_approachSpeed;
+            return;
         }
 
-        m_moveDirection = direction.normalized * m_approachSpeed;
+        direction *= -1;
+        m_moveDirection = direction.normalized * m_moveSpeed;
     }
 
     #region 当たり判定
