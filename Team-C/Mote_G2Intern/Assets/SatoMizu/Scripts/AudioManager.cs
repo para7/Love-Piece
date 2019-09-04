@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
-    [SerializeField]static private int CLIP_MAX;
+    private const int CLIP_MAX = 10;
     public AudioClip[] m_audioclip = new AudioClip[CLIP_MAX];
 
     private AudioSource[] m_audioSource;
@@ -14,14 +14,17 @@ public class AudioManager : MonoBehaviour {
     {
         m_audioSource = gameObject.GetComponents<AudioSource>();
 
-        if (m_audioSource[0])
+        for (int i = 0; i < CLIP_MAX; i++)
         {
-            m_audioSource[0].clip = m_audioclip[0];
-            m_audioSource[0].Play();
+            if (m_audioclip[i])
+            {
+                m_audioSource[i].clip = m_audioclip[i];
+            }
         }
+    }
 
-        if (m_audioSource[1])
-        { 
-        }
+    public void AudioPlay(int _index)
+    {
+        m_audioSource[_index].Play();
     }
 }
