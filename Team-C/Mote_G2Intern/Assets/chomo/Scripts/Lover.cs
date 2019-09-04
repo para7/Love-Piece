@@ -155,6 +155,11 @@ public class Lover : MonoBehaviour
         {
             m_isArea = false;
         }
+
+        if(collision.gameObject.CompareTag("ResultArea"))
+        {
+            ScoreCounter.GetScore(-m_scoreValue);
+        }
     }
 
     #endregion
