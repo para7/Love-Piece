@@ -14,12 +14,5 @@ public class AudioManager : MonoBehaviour {
         m_audioSource = gameObject.GetComponents<AudioSource>();
         m_audioSource[0].clip = m_audioclip[0];
         m_audioSource[0].Play();
-        m_audioSource[1].clip = m_audioclip[1];
-        m_audioSource[1].Play();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
