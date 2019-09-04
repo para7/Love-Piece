@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf98181d95104a34bad4a28bf1f80133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_defaltSprite: {fileID: 0}
-  m_fallInLoveSprite: {fileID: 0}
+  m_defaltSprite: {fileID: 21300000, guid: 69aa46339ebd8044381f4bc9abcc53e6, type: 3}
+  m_fallInLoveSprite: {fileID: 21300000, guid: 5d7752f7471489d46b82a47c3c8c01e3, type: 3}
 --- !u!114 &114776949215871496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,10 +103,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29181c3bcf92fa4b84fe67fb1326ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 200
-  m_approachSpeed: 50
-  m_stopTime: 7
-  m_scoreValue: 1000
+  m_moveSpeed: 150
+  m_approachSpeed: 300
+  m_stopTime: 2
+  m_scoreValue: -10
   iniPos: 0
 --- !u!212 &212339262373127868
 SpriteRenderer:
@@ -143,8 +143,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0.9137181, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 69aa46339ebd8044381f4bc9abcc53e6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114371571735347394}
   - component: {fileID: 58904962219710982}
   m_Layer: 0
-  m_Name: LoverMadonna
+  m_Name: LoverMegami
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,10 +90,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29181c3bcf92fa4b84fe67fb1326ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 100
-  m_approachSpeed: 200
-  m_stopTime: 7
-  m_scoreValue: -10
+  m_moveSpeed: 200
+  m_approachSpeed: 30
+  m_stopTime: 5
+  m_scoreValue: 100
   iniPos: 0
 --- !u!114 &114371571735347394
 MonoBehaviour:
@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf98181d95104a34bad4a28bf1f80133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_defaltSprite: {fileID: 0}
-  m_fallInLoveSprite: {fileID: 0}
+  m_defaltSprite: {fileID: 21300000, guid: c3e2de02d45cdb947b38736e470c06ea, type: 3}
+  m_fallInLoveSprite: {fileID: 21300000, guid: eca43561ff2a4304d89692219ee61c0b, type: 3}
 --- !u!212 &212914891052764406
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -143,8 +143,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.8495579, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c3e2de02d45cdb947b38736e470c06ea, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
