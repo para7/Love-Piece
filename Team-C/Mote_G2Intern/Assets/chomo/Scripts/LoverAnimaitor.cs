@@ -17,7 +17,7 @@ public class LoverAnimaitor : MonoBehaviour
     {
         m_spriteRenderer.sprite = m_defaltSprite;
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") ||
             collision.gameObject.CompareTag("ResultArea"))
