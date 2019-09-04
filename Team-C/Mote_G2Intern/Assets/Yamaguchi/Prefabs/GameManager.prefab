@@ -54,10 +54,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LoverPrefab:
   - {fileID: 1510921906638672, guid: 8d15560b8dcd756478c46b5fa888d1ca, type: 2}
+  - {fileID: 1423985750606972, guid: dbf05e93d2b76e64dab5ff0ee687d3bb, type: 2}
+  - {fileID: 1801780205250776, guid: 58d01f0e922e83944a0d75ecf561201e, type: 2}
   - {fileID: 1497107138251734, guid: efe4556f69ed149b2bc8c4db55c9c5dd, type: 2}
-  - {fileID: 1021375400806860, guid: 533f2b2ff6009684bbbcd34da9a62b39, type: 2}
-  - {fileID: 1812381843049324, guid: 24c7dfb22a6cdf140a7a981ad287b02b, type: 2}
-  - {fileID: 1987431842711448, guid: 90935dd4b3497fd438277230b375d2b9, type: 2}
 --- !u!114 &114803058980154938
 MonoBehaviour:
   m_ObjectHideFlags: 1
