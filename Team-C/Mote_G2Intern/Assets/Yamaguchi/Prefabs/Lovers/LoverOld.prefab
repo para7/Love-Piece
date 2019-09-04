@@ -92,9 +92,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_moveSpeed: 50
   m_approachSpeed: 50
-  m_stopTime: 1.5
+  m_stopTime: 7
   m_scoreValue: 10
-  m_moveDirection: {x: 1, y: 0}
+  iniPos: 0
 --- !u!114 &114583926290589806
 MonoBehaviour:
   m_ObjectHideFlags: 1
