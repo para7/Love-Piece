@@ -76,6 +76,11 @@ public class Lover : MonoBehaviour
         _loverMover.Move(m_moveDirection);
     }
 
+    public void LoverAllStop()
+    {
+        _loverMover.Move(Vector2.zero);
+    }
+
     private void SetMoveDirection(bool isApproach)
     {
         var direction = m_PlayerPos - transform.position;

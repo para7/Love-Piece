@@ -13,6 +13,13 @@ public class GameManager : MonoBehaviour {
 
     private bool m_CanPut;
 
+    [HideInInspector] public bool m_InGame { get; private set; }
+
+    [SerializeField] private int m_gameTime = 15;
+    public int getGameTime {
+        get { return m_gameTime; }
+    }
+
     void Awake()
     {
         if (Instance == null)
@@ -29,15 +36,30 @@ public class GameManager : MonoBehaviour {
         m_CreateLover.Init();
 
         m_CanPut = true;
+
+        m_InGame = true;
     }
 
     void Start()
     {
         m_loverMgr = LoverManager.Instance;
+
+        Observable.Timer(TimeSpan.FromSeconds
+            ((double)getGameTime+1)).Subscribe(_ =>
+        {
+            m_InGame = false;
+
+            m_loverMgr.AllStop();
+        }).AddTo(this);
     }
 
     // Update is called once per frame
     void Update () {
+        if (!m_InGame)
+        {
+            return;
+        }
+
         m_loverMgr.AllUpdate();
 
         if (!m_CanPut)

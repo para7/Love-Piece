@@ -15,6 +15,11 @@ public class TimerCounter : MonoBehaviour {
     private void Start()
     {
         StartCoroutine(TimerCoroutine());
+
+        /// <summary>
+        /// GameManagerからTimerを設定する
+        /// </summary>
+        m_Time = GameManager.Instance.getGameTime;
     }
 
     IEnumerator TimerCoroutine()
