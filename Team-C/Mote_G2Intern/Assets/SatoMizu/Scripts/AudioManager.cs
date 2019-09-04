@@ -9,10 +9,19 @@ public class AudioManager : MonoBehaviour {
     private AudioSource[] m_audioSource;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         m_audioSource = gameObject.GetComponents<AudioSource>();
-        m_audioSource[0].clip = m_audioclip[0];
-        m_audioSource[0].Play();
+
+        if (m_audioSource[0])
+        {
+            m_audioSource[0].clip = m_audioclip[0];
+            m_audioSource[0].Play();
+        }
+
+        if (m_audioSource[1])
+        { 
+        }
     }
 }
