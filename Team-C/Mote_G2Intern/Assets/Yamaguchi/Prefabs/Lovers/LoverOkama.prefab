@@ -9,47 +9,48 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1987431842711448}
+  m_RootGameObject: {fileID: 1812381843049324}
   m_IsPrefabAsset: 1
---- !u!1 &1987431842711448
+--- !u!1 &1812381843049324
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4338894258921042}
-  - component: {fileID: 212694635089807286}
-  - component: {fileID: 50723165199137588}
-  - component: {fileID: 114562149223090692}
-  - component: {fileID: 58330278440021970}
+  - component: {fileID: 4355952189725364}
+  - component: {fileID: 212339262373127868}
+  - component: {fileID: 50137068612030434}
+  - component: {fileID: 114776949215871496}
+  - component: {fileID: 114245627841667308}
+  - component: {fileID: 58942508386001262}
   m_Layer: 0
-  m_Name: LoverSyunsoku
+  m_Name: LoverOkama
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4338894258921042
+--- !u!4 &4355952189725364
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1987431842711448}
+  m_GameObject: {fileID: 1812381843049324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.07, y: 3.79, z: 0}
+  m_LocalPosition: {x: -5.01, y: -2.2, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50723165199137588
+--- !u!50 &50137068612030434
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1987431842711448}
+  m_GameObject: {fileID: 1812381843049324}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
@@ -63,12 +64,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58330278440021970
+--- !u!58 &58942508386001262
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1987431842711448}
+  m_GameObject: {fileID: 1812381843049324}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -78,27 +79,41 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &114562149223090692
+--- !u!114 &114245627841667308
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1987431842711448}
+  m_GameObject: {fileID: 1812381843049324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf98181d95104a34bad4a28bf1f80133, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_defaltSprite: {fileID: 0}
+  m_fallInLoveSprite: {fileID: 0}
+--- !u!114 &114776949215871496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1812381843049324}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e29181c3bcf92fa4b84fe67fb1326ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 300
+  m_moveSpeed: 200
+  m_approachSpeed: 50
   m_stopTime: 1.5
-  m_scoreValue: 2
+  m_scoreValue: 1000
   m_moveDirection: {x: 1, y: 0}
---- !u!212 &212694635089807286
+--- !u!212 &212339262373127868
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1987431842711448}
+  m_GameObject: {fileID: 1812381843049324}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -129,7 +144,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0.38247347, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9137181, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
