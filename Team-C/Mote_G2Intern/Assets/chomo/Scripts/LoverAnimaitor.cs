@@ -54,7 +54,7 @@ public class LoverAnimaitor : MonoBehaviour
         if (!m_jumpTween.IsPlaying() &&
              collision.gameObject.CompareTag("Stop"))
         {
-            m_jumpTween.Play();
+            m_jumpTween.Restart();
         }
     }
 
