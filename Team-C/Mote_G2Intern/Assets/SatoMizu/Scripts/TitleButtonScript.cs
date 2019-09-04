@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleButtonScript : MonoBehaviour {
 
@@ -16,6 +17,10 @@ public class TitleButtonScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (Input.anyKey)
+        {
+            this.GetComponent<AudioManager>().AudioPlay();
+            SceneManager.LoadScene("MainScene");
+        }
+    }
 }
