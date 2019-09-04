@@ -44,7 +44,6 @@ public class LoverAnimaitor : MonoBehaviour
             m_spriteRenderer.sprite = m_defaltSprite;
 
             m_particleSystem.Stop();
-            //m_particleSystem.Pause();
         }
     }
 }
