@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UniRx;
 using System;
 
@@ -19,7 +21,9 @@ public class Lover : MonoBehaviour
     private bool m_isArea;
 
     //呼び出し時に方向を代入させる
-    [HideInInspector] public Vector2 m_moveDirection = Vector2.right;
+    [HideInInspector] public Vector2 m_moveDirection { get; set; }
+
+    [HideInInspector] public int iniPos;
 
     private Vector3 m_PlayerPos = new Vector3(0, 0, 0);
 
@@ -30,6 +34,26 @@ public class Lover : MonoBehaviour
 
     private void Start()
     {
+        switch(iniPos)
+        {
+            case 0:
+                m_moveDirection = new Vector2(1.0f, .0f);
+                transform.position = new Vector3(-7.5f, 4.0f, 0);
+                break;
+            case 1:
+                m_moveDirection = new Vector2(-1.0f, .0f);
+                transform.position = new Vector3(7.5f, -4.0f, 0);
+                break;
+            case 2:
+                m_moveDirection = new Vector2(.0f, -1.0f);
+                transform.position = new Vector3(5.3f, 5.8f, 0);
+                break;
+            default:
+                m_moveDirection = new Vector2(.0f, 1.0f);
+                transform.position = new Vector3(-5.3f, -5.8f, 0);
+                break;
+        }
+        
         LoverManager.Instance.AddList(this);
 
         m_moveDirection *= m_moveSpeed;
