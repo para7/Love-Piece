@@ -24,7 +24,7 @@ public class LoverManager : MonoBehaviour {
     }
 
     // Update is called once per frame
-    private void Update ()
+    public void AllUpdate ()
     {
 		foreach(var lover in m_Lovers)
         {
