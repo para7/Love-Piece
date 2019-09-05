@@ -33,19 +33,26 @@ public class GameManager : MonoBehaviour {
 
         m_CreateLover = GetComponent<IniCreateLover>();
 
-        m_CreateLover.Init();
+        Observable.Timer(TimeSpan.FromSeconds(3.0)).Subscribe(_ =>
+        {
+            m_CreateLover.Init();
 
-        m_CanPut = true;
+            m_CanPut = true;
 
-        m_InGame = true;
+            m_InGame = true;
+        }).AddTo(this);
     }
 
     void Start()
     {
         m_loverMgr = LoverManager.Instance;
 
+        /// <summary>
+        /// ゲームタイマーを終了する処理
+        /// (カウントダウン3秒追加)
+        /// </summary>
         Observable.Timer(TimeSpan.FromSeconds
-            ((double)getGameTime+1)).Subscribe(_ =>
+            ((double)getGameTime+4)).Subscribe(_ =>
         {
             m_InGame = false;
 
