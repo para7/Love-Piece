@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
-    [SerializeField]static private int CLIP_MAX;
-    public AudioClip[] m_audioclip = new AudioClip[CLIP_MAX];
 
-    private AudioSource[] m_audioSource;
+    private AudioSource[] m_audioSources;
 
 
-	// Use this for initialization
-	void Start () {
-        m_audioSource = gameObject.GetComponents<AudioSource>();
-        m_audioSource[0].clip = m_audioclip[0];
-        m_audioSource[0].Play();
+    // Use this for initialization
+    void Awake()
+    {
+        m_audioSources = this.GetComponents<AudioSource>();
+    }
+
+    public void AudioPlay(int _index)
+    {
+        m_audioSources[_index].Play();
+    }
+
+    public void AudioPlayClipAtPoint(int _index)
+    {
+        AudioSource.PlayClipAtPoint(m_audioSources[_index].clip, new Vector3(0.0f, 0.0f, 0.0f));
     }
 }

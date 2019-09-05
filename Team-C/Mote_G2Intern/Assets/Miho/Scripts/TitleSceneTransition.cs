@@ -1,14 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TitleSceneTransition : MonoBehaviour {
 
-    private void Update()
+    // Use this for initialization
+    void Start()
     {
-        if (Input.anyKey)
-            SceneManager.LoadScene("MainScene");
+        this.GetComponent<AudioManager>().AudioPlay(0);
     }
-
 }

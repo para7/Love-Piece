@@ -20,6 +20,8 @@ public class Lover : MonoBehaviour
 
     private bool m_isArea;
 
+    SerialDisposable m_StopLover;
+
     //呼び出し時に方向を代入させる
     [HideInInspector] public Vector2 m_moveDirection { get; set; }
 
@@ -37,19 +39,23 @@ public class Lover : MonoBehaviour
         switch(iniPos)
         {
             case 0:
-                m_moveDirection = new Vector2(1.0f, .0f);
+                m_moveDirection = new Vector2
+                    (4.9f, UnityEngine.Random.Range(.0f, -8.7f)).normalized;
                 transform.position = new Vector3(-7.5f, 4.0f, 0);
                 break;
             case 1:
-                m_moveDirection = new Vector2(-1.0f, .0f);
+                m_moveDirection = new Vector2
+                    (-4.9f, UnityEngine.Random.Range(.0f, 8.7f)).normalized;
                 transform.position = new Vector3(7.5f, -4.0f, 0);
                 break;
             case 2:
-                m_moveDirection = new Vector2(.0f, -1.0f);
+                m_moveDirection = new Vector2
+                    (UnityEngine.Random.Range(-11f, .0f), -2.8f).normalized;
                 transform.position = new Vector3(5.3f, 5.8f, 0);
                 break;
             default:
-                m_moveDirection = new Vector2(.0f, 1.0f);
+                m_moveDirection = new Vector2
+                    (UnityEngine.Random.Range(.0f, 2.8f), 2.8f).normalized;
                 transform.position = new Vector3(-5.3f, -5.8f, 0);
                 break;
         }
@@ -60,6 +66,14 @@ public class Lover : MonoBehaviour
 
         m_isStopped = false;
         m_isArea = false;
+
+        m_StopLover = new SerialDisposable();
+
+        m_StopLover.Disposable = Observable.Timer(TimeSpan.FromSeconds(m_stopTime)).Subscribe(_ =>
+        {
+            m_isStopped = false;
+            SetMoveDirection(isApproach: false);
+        });
     }
 
     public void LoverUpdate()
@@ -74,6 +88,12 @@ public class Lover : MonoBehaviour
         }
 
         _loverMover.Move(m_moveDirection);
+    }
+
+    public void LoverAllStop()
+    {
+        _loverMover.Move(Vector2.zero);
+        m_StopLover.Dispose();
     }
 
     private void SetMoveDirection(bool isApproach)
@@ -106,16 +126,12 @@ public class Lover : MonoBehaviour
             /// <summary>
             /// m_stopTime秒経ったらfalseにする
             /// </summary>
-            Observable.Timer(TimeSpan.FromSeconds(m_stopTime)).Subscribe(_ =>
-            {
-                m_isStopped = false;
-                SetMoveDirection(isApproach: false);
-            }).AddTo(this);
+            m_StopLover.AddTo(this);
         }
 
         if (collision.gameObject.CompareTag("ResultArea"))
         {
-            ScoreCounter.GetScore(m_scoreValue);
+            ObjectPoolManager.Instance.OnGetScorePlayer(transform.position, m_scoreValue);
         }
     }
 
@@ -128,6 +144,12 @@ public class Lover : MonoBehaviour
 
         if (m_isStopped)
         {
+            m_StopLover.Disposable = Observable.Timer(TimeSpan.FromSeconds(m_stopTime)).Subscribe(_ =>
+            {
+                m_isStopped = false;
+                SetMoveDirection(isApproach: false);
+            });
+
             return;
         }
 
@@ -149,6 +171,19 @@ public class Lover : MonoBehaviour
         if (collision.gameObject.CompareTag("Stop"))
         {
             m_isArea = false;
+        }
+
+        if(collision.gameObject.CompareTag("ResultArea"))
+        {
+            //スコア減算
+            ObjectPoolManager.Instance.OnGetScorePlayer(transform.position, -m_scoreValue);
+        }
+
+        if (collision.gameObject.CompareTag("DeleteZone"))
+        {
+            LoverManager.Instance.RemoveList(this);
+            m_StopLover.Dispose();
+            Destroy(this.gameObject);
         }
     }
 

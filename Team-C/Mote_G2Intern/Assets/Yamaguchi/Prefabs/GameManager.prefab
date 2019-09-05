@@ -72,6 +72,8 @@ MonoBehaviour:
   - {fileID: 1423985750606972, guid: dbf05e93d2b76e64dab5ff0ee687d3bb, type: 2}
   - {fileID: 1801780205250776, guid: 58d01f0e922e83944a0d75ecf561201e, type: 2}
   - {fileID: 1497107138251734, guid: efe4556f69ed149b2bc8c4db55c9c5dd, type: 2}
+  - {fileID: 1021375400806860, guid: 533f2b2ff6009684bbbcd34da9a62b39, type: 2}
+  - {fileID: 1812381843049324, guid: 24c7dfb22a6cdf140a7a981ad287b02b, type: 2}
 --- !u!114 &114803058980154938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d7456bab28f489c917ebcd18a89311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_gameTime: 15
 --- !u!114 &114832487047437506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,4 +97,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c19812fdd820944a9ad5ca1c62f10f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Time: 15
+  m_Time: 60

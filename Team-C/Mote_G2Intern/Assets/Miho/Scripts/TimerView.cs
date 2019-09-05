@@ -11,7 +11,28 @@ public class TimerView : MonoBehaviour {
 
     void Start()
     {
-        m_TimeCounter.OnTimeChanged.Subscribe(time => m_CounterText.text = "残り時間:"+time.ToString());
+        // m_TimeCounter.OnTimeChanged.Subscribe(time => m_CounterText.text = "残り時間:"+time.ToString());
+        StartCoroutine(StartTimeCount());
     }
 	
+    //この関数を読んでからLoverが動くようにする
+    private IEnumerator StartTimeCount()
+    {
+        int countTime = 3;
+
+        while (countTime > 0)
+        {
+            m_CounterText.text = countTime.ToString();
+            countTime--;
+            yield return new WaitForSeconds(1f);
+        }
+
+        m_CounterText.text = "スタート";
+
+        yield return new WaitForSeconds(1f);
+
+        m_TimeCounter.OnTimeChanged.Subscribe(time => m_CounterText.text = "残り時間:" + time.ToString());
+
+        StartCoroutine(m_TimeCounter.TimerCoroutine());
+    }
 }

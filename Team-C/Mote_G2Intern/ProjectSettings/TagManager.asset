@@ -7,6 +7,8 @@ TagManager:
   - Stop
   - ResultArea
   - ReaultArea
+  - TitleButton
+  - DeleteZone
   layers:
   - Default
   - TransparentFX

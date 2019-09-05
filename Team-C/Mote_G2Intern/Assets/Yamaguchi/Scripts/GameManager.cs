@@ -13,6 +13,13 @@ public class GameManager : MonoBehaviour {
 
     private bool m_CanPut;
 
+    [HideInInspector] public bool m_InGame { get; private set; }
+
+    [SerializeField] private int m_gameTime = 15;
+    public int getGameTime {
+        get { return m_gameTime; }
+    }
+
     void Awake()
     {
         if (Instance == null)
@@ -26,18 +33,40 @@ public class GameManager : MonoBehaviour {
 
         m_CreateLover = GetComponent<IniCreateLover>();
 
-        m_CreateLover.Init();
+        Observable.Timer(TimeSpan.FromSeconds(3.0)).Subscribe(_ =>
+        {
+            m_CreateLover.Init();
 
-        m_CanPut = true;
+            m_CanPut = true;
+
+            m_InGame = true;
+        }).AddTo(this);
     }
 
     void Start()
     {
         m_loverMgr = LoverManager.Instance;
+
+        /// <summary>
+        /// ゲームタイマーを終了する処理
+        /// (カウントダウン3秒追加)
+        /// </summary>
+        Observable.Timer(TimeSpan.FromSeconds
+            ((double)getGameTime+4)).Subscribe(_ =>
+        {
+            m_InGame = false;
+
+            m_loverMgr.AllStop();
+        }).AddTo(this);
     }
 
     // Update is called once per frame
-    void Update () {
+    void FixedUpdate () {
+        if (!m_InGame)
+        {
+            return;
+        }
+
         m_loverMgr.AllUpdate();
 
         if (!m_CanPut)
