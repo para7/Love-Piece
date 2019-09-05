@@ -37,19 +37,23 @@ public class Lover : MonoBehaviour
         switch(iniPos)
         {
             case 0:
-                m_moveDirection = new Vector2(1.0f, .0f);
+                m_moveDirection = new Vector2
+                    (4.9f, UnityEngine.Random.Range(.0f, -8.7f)).normalized;
                 transform.position = new Vector3(-7.5f, 4.0f, 0);
                 break;
             case 1:
-                m_moveDirection = new Vector2(-1.0f, .0f);
+                m_moveDirection = new Vector2
+                    (-4.9f, UnityEngine.Random.Range(.0f, 8.7f)).normalized;
                 transform.position = new Vector3(7.5f, -4.0f, 0);
                 break;
             case 2:
-                m_moveDirection = new Vector2(.0f, -1.0f);
+                m_moveDirection = new Vector2
+                    (UnityEngine.Random.Range(-11f, .0f), -2.8f).normalized;
                 transform.position = new Vector3(5.3f, 5.8f, 0);
                 break;
             default:
-                m_moveDirection = new Vector2(.0f, 1.0f);
+                m_moveDirection = new Vector2
+                    (UnityEngine.Random.Range(.0f, 2.8f), 2.8f).normalized;
                 transform.position = new Vector3(-5.3f, -5.8f, 0);
                 break;
         }
