@@ -36,6 +36,7 @@ public class TitleStart : MonoBehaviour {
                 Debug.Log("LoversImageなし");
             }
 
+            gameObject.GetComponent<AudioManager>().AudioPlayClipAtPoint(0);
             Destroy(gameObject);
 
             CreateInstance(m_Character);

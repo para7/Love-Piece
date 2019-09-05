@@ -39,7 +39,7 @@ public class SetsumeiButton : MonoBehaviour {
             newObject.transform.localPosition = new Vector3(4.25f, -4.0f, 0.0f);
             newObject.transform.localScale = new Vector2(1.5f, 1.5f);
 
-            GetComponent<AudioManager>().AudioPlay(0);
+            GetComponent<AudioManager>().AudioPlayClipAtPoint(0);
         }
     }
 

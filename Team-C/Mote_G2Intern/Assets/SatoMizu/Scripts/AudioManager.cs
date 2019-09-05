@@ -17,4 +17,9 @@ public class AudioManager : MonoBehaviour {
     {
         m_audioSources[_index].Play();
     }
+
+    public void AudioPlayClipAtPoint(int _index)
+    {
+        AudioSource.PlayClipAtPoint(m_audioSources[_index].clip, new Vector3(0.0f, 0.0f, 0.0f));
+    }
 }
