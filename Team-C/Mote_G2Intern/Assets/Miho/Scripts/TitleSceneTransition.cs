@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class TitleSceneTransition : MonoBehaviour {
 
+    [SerializeField] GameObject m_BG1;
+
+    private void Awake()
+    {
+        GameObject newObject = Instantiate(m_BG1);
+        newObject.name = m_BG1.name;
+        newObject.SetActive(true);
+    }
     // Use this for initialization
     void Start()
     {
