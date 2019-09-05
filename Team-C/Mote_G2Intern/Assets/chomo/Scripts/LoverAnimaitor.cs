@@ -12,6 +12,9 @@ public class LoverAnimaitor : MonoBehaviour
     private ParticleSystem m_particleSystem;
 
     private Tween m_jumpTween;
+
+    private bool m_isResultArea;
+
     private void Awake()
     { 
         m_spriteRenderer = GetComponent<SpriteRenderer>();
@@ -24,6 +27,8 @@ public class LoverAnimaitor : MonoBehaviour
         m_spriteRenderer.sprite = m_defaltSprite;
 
         InitializeJumpTween();
+
+        m_isResultArea = false;
     }
 
     private void InitializeJumpTween()
@@ -56,22 +61,33 @@ public class LoverAnimaitor : MonoBehaviour
         {
             m_jumpTween.Restart();
         }
+
+        if (collision.gameObject.CompareTag("ResultArea"))
+        {
+            m_isResultArea = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {   
-        if (collision.gameObject.CompareTag("Player") ||
-            collision.gameObject.CompareTag("ResultArea"))
-        {
-            m_spriteRenderer.sprite = m_defaltSprite;
-            m_particleSystem.Stop();
-        }
 
         if (collision.gameObject.CompareTag("ResultArea"))
         {
+            m_isResultArea = false;
+
             if (m_jumpTween.IsPlaying())
             {
                 m_jumpTween.Pause();
+            }
+        }
+
+        if (collision.gameObject.CompareTag("Player") ||
+            collision.gameObject.CompareTag("ResultArea"))
+        {
+            if (!m_isResultArea)
+            {
+                m_spriteRenderer.sprite = m_defaltSprite;
+                m_particleSystem.Stop();
             }
         }
     }
