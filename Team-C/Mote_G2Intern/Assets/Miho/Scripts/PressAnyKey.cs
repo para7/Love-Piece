@@ -12,6 +12,9 @@ public class PressAnyKey : MonoBehaviour {
     private void PressSceneTransition(string scene)
     {
         if (Input.anyKey)
+        {
+            ScoreCounter.m_Score = 0;
             SceneManager.LoadScene(scene);
+        }
     }
 }
