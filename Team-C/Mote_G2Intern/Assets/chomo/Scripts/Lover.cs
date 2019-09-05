@@ -131,7 +131,7 @@ public class Lover : MonoBehaviour
 
         if (collision.gameObject.CompareTag("ResultArea"))
         {
-            ScoreCounter.GetScore(m_scoreValue);
+            ObjectPoolManager.Instance.OnGetScorePlayer(transform.position, m_scoreValue);
         }
     }
 
@@ -175,7 +175,8 @@ public class Lover : MonoBehaviour
 
         if(collision.gameObject.CompareTag("ResultArea"))
         {
-            ScoreCounter.GetScore(-m_scoreValue);
+            //スコア減算
+            ObjectPoolManager.Instance.OnGetScorePlayer(transform.position, -m_scoreValue);
         }
 
         if (collision.gameObject.CompareTag("DeleteZone"))
