@@ -2,7 +2,7 @@
 using UniRx.Triggers;
 using UnityEngine;
 
-public class ObjectPoolManager : MonoBehaviour
+public class ObjectPoolManager : SingletonMonoBehaviour<ObjectPoolManager>
 {
     [SerializeField]
     private PoolAbleObject m_poolAblePrefab;
@@ -16,10 +16,6 @@ public class ObjectPoolManager : MonoBehaviour
         this.OnDestroyAsObservable().Subscribe(_ => m_gameObjectPool.Dispose());
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Space)) { OnGetScorePlayer(this.transform.position); }
-    }
     private void OnGetScorePlayer(Vector3 objectPosition)
     {
         var gameObj = m_gameObjectPool.Rent();
@@ -27,7 +23,6 @@ public class ObjectPoolManager : MonoBehaviour
         gameObj.ShowScore(objectPosition)
             .Subscribe(__ =>
             {
-                Debug.Log("Return");
                 m_gameObjectPool.Return(gameObj);
             }).AddTo(this);
     }
