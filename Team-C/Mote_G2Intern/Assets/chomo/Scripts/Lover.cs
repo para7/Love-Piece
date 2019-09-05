@@ -20,7 +20,7 @@ public class Lover : MonoBehaviour
 
     private bool m_isArea;
 
-    IDisposable m_StopLover;
+    SerialDisposable m_StopLover;
 
     //呼び出し時に方向を代入させる
     [HideInInspector] public Vector2 m_moveDirection { get; set; }
@@ -67,11 +67,12 @@ public class Lover : MonoBehaviour
         m_isStopped = false;
         m_isArea = false;
 
-        m_StopLover = Observable.Timer(TimeSpan.FromSeconds(m_stopTime)).Subscribe(_ =>
+        m_StopLover = new SerialDisposable();
+
+        m_StopLover.Disposable = Observable.Timer(TimeSpan.FromSeconds(m_stopTime)).Subscribe(_ =>
         {
             m_isStopped = false;
             SetMoveDirection(isApproach: false);
-            Debug.Log("終了");
         });
     }
 
@@ -143,10 +144,11 @@ public class Lover : MonoBehaviour
 
         if (m_isStopped)
         {
-            m_StopLover.Dispose();
-            //m_StopLover.AddTo(this);
-
-            Debug.Log("更新");
+            m_StopLover.Disposable = Observable.Timer(TimeSpan.FromSeconds(m_stopTime)).Subscribe(_ =>
+            {
+                m_isStopped = false;
+                SetMoveDirection(isApproach: false);
+            });
 
             return;
         }
@@ -163,8 +165,6 @@ public class Lover : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            m_StopLover.AddTo(this);
-            Debug.Log("ああああああ");
             SetMoveDirection(isApproach: false);
         }
 

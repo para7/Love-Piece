@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour {
             return;
         }
 
-        //m_CreateLover.Init();
+        m_CreateLover.Init();
         m_CanPut = false;
 
         Observable.Timer(TimeSpan.FromSeconds(1.0)).Subscribe(_ =>

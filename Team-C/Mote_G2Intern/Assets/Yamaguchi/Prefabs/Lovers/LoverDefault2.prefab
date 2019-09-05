@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_moveSpeed: 150
   m_approachSpeed: 100
-  m_stopTime: 7
+  m_stopTime: 3
   m_scoreValue: 1
   iniPos: 0
 --- !u!198 &198922974030848490
