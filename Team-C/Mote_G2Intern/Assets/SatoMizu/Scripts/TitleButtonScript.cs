@@ -28,7 +28,7 @@ public class TitleButtonScript : MonoBehaviour
 
         if (Input.anyKeyDown)
         {
-            this.GetComponent<AudioManager>().AudioPlay();
+            GetComponent<AudioManager>().AudioPlay(0);
             FadeManager.Instance.LoadScene(m_SceneName, 2.0f);
         }
     }
@@ -41,6 +41,7 @@ public class TitleButtonScript : MonoBehaviour
             color.a = 1.0f;
             m_spriteRender.color = color;
             m_bReady = true;
+            GetComponent<AudioManager>().AudioPlay(1);
             Debug.Log("HIT");
         }
     }
