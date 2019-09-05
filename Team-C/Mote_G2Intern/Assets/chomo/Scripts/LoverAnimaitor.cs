@@ -20,13 +20,15 @@ public class LoverAnimaitor : MonoBehaviour
         m_spriteRenderer = GetComponent<SpriteRenderer>();
 
         m_particleSystem = GetComponent<ParticleSystem>();
+
+        InitializeJumpTween();
     }
 
     private void Start()
     {
         m_spriteRenderer.sprite = m_defaltSprite;
 
-        InitializeJumpTween();
+        //InitializeJumpTween();
 
         m_isResultArea = false;
     }
