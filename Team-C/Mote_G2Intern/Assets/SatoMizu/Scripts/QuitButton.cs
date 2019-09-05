@@ -25,6 +25,7 @@ public class QuitButton : MonoBehaviour {
 
         if (Input.anyKeyDown)
         {
+            GetComponent<AudioManager>().AudioPlayClipAtPoint(0);
             Quit();
         }
     }
@@ -47,6 +48,7 @@ public class QuitButton : MonoBehaviour {
             m_spriteRender.color = color;
             m_bReady = true;
             Debug.Log("HIT");
+            GetComponent<AudioManager>().AudioPlay(1);
         }
     }
 
