@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
 
-    private AudioSource m_audioSource;
+    private AudioSource[] m_audioSources;
 
 
     // Use this for initialization
     void Awake()
     {
-        m_audioSource = this.GetComponent<AudioSource>();
+        m_audioSources = this.GetComponents<AudioSource>();
     }
 
-    public void AudioPlay()
+    public void AudioPlay(int _index)
     {
-        m_audioSource.Play();
+        m_audioSources[_index].Play();
     }
 }

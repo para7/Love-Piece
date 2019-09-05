@@ -29,6 +29,7 @@ public class SetsumeiButton : MonoBehaviour {
 
         if (Input.anyKeyDown)
         {
+            Destroy(GameObject.Find("Character"));
             Destroy(GameObject.Find("StartButton"));
             Destroy(GameObject.Find("QuitButton"));
             Destroy(GameObject.Find("SetsumeiButton"));
@@ -37,6 +38,8 @@ public class SetsumeiButton : MonoBehaviour {
             GameObject newObject = CreateInstance(m_PressAnyKey);
             newObject.transform.localPosition = new Vector3(4.25f, -4.0f, 0.0f);
             newObject.transform.localScale = new Vector2(1.5f, 1.5f);
+
+            GetComponent<AudioManager>().AudioPlay(0);
         }
     }
 
@@ -49,6 +52,7 @@ public class SetsumeiButton : MonoBehaviour {
             m_spriteRender.color = color;
             m_bReady = true;
             Debug.Log("HIT");
+            GetComponent<AudioManager>().AudioPlay(1);
         }
     }
 
