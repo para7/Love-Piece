@@ -8,6 +8,8 @@ public class TitleStart : MonoBehaviour {
     [SerializeField] GameObject m_StartButton;
     [SerializeField] GameObject m_QuitButton;
     [SerializeField] GameObject m_SetsumeiButton;
+    [SerializeField] GameObject m_BG1;
+    [SerializeField] GameObject m_BG2;
 
     // Use this for initialization
     void Start () {
@@ -22,22 +24,21 @@ public class TitleStart : MonoBehaviour {
             {
                 Destroy(GameObject.Find("TitleLogo"));
             }
-            else
-            {
-                Debug.Log("ロゴなし");
-            }
 
             if(GameObject.Find("LoversImage"))
             {
                 GameObject.Find("LoversImage").SetActive(false);
             }
-            else
-            {
-                Debug.Log("LoversImageなし");
-            }
 
             gameObject.GetComponent<AudioManager>().AudioPlayClipAtPoint(0);
             Destroy(gameObject);
+
+            if (GameObject.Find("BG1"))
+            {
+                Debug.Log("BG1");
+                m_BG1.SetActive(false);
+                CreateInstance(m_BG2);
+            }
 
             CreateInstance(m_Character);
             CreateInstance(m_StartButton);
