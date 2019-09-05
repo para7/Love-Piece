@@ -9,10 +9,12 @@ public class GameObjectPool : ObjectPool<PoolAbleObject>
 
     private readonly Transform m_transform;
 
-    public GameObjectPool(Transform transform, PoolAbleObject prefab)
+    private readonly Canvas m_canvas;
+    public GameObjectPool(Transform transform, PoolAbleObject prefab, Canvas canvas)
     {
         m_poolAbleObject = prefab;
         m_transform = transform;
+        m_canvas = canvas;
     }
 
     //追加で生成されるときに実行
@@ -20,6 +22,7 @@ public class GameObjectPool : ObjectPool<PoolAbleObject>
     {
         var obj = GameObject.Instantiate(m_poolAbleObject);
 
+        obj.Init(m_canvas);
         //ヒエラルキーが散らからないように一箇所にまとめる
         obj.transform.SetParent(m_transform);
 

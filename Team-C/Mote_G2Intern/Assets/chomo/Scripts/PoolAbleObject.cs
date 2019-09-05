@@ -10,22 +10,23 @@ public class PoolAbleObject : MonoBehaviour
 
     private Canvas m_canvas;
     private RectTransform m_canvasRect;
-    private RectTransform m_rectTransform;
 
-    private Text m_text;
+    [SerializeField]private RectTransform m_rectTransform;
+
+    [SerializeField]private Text m_text;
 
     [SerializeField]private Vector2 m_offset = new Vector2(0, 1.5f);
-    private void Start()
-    {
-        m_canvas = GetComponentInParent<Canvas>();
-        m_canvasRect = m_canvas.GetComponent<RectTransform>();
 
-        m_rectTransform = GetComponent<RectTransform>();
-        m_text = GetComponent<Text>();
-    }
+    public void Init(Canvas canvas)
+    {
+        m_canvas = canvas;
+        m_canvasRect = m_canvas.GetComponent<RectTransform>();
+    } 
 
     public IObservable<Unit> ShowScore(Vector3 position, int score)
     {
+        ScoreCounter.GetScore(score);
+
         SetDiplayPosition(position);
 
         SetScoreProperty(score);
@@ -33,7 +34,7 @@ public class PoolAbleObject : MonoBehaviour
         transform.DOPunchScale(transform.localScale * 1.5f, 1f);
             
            //1秒後にエフェクトを止めて終了
-        return Observable.Timer(TimeSpan.FromSeconds(1.0f))
+        return Observable.Timer(TimeSpan.FromSeconds(m_finishTime))
                 .ForEachAsync(_ => this.gameObject.SetActive(false));
     }
 
@@ -42,7 +43,6 @@ public class PoolAbleObject : MonoBehaviour
     {
         switch (m_canvas.renderMode)//レンダーモードによって変える
         {
-
             case RenderMode.ScreenSpaceOverlay:
                 m_rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, targetPos + m_offset);
 

@@ -41,7 +41,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.3726415, b: 0.3726415, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.37254903}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -61,9 +61,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+10
-
-'
+  m_Text: 0
 --- !u!114 &114436121135861968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -75,7 +73,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4032fab5e4d7142b69e78cabe79b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_finishTime: 0.5
+  m_finishTime: 1
+  m_rectTransform: {fileID: 224278737487874848}
+  m_text: {fileID: 114292205861419926}
+  m_offset: {x: 0, y: 1.5}
 --- !u!222 &222333972952328582
 CanvasRenderer:
   m_ObjectHideFlags: 1
