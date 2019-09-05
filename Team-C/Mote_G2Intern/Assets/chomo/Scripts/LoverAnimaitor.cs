@@ -59,13 +59,16 @@ public class LoverAnimaitor : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D collision)
-    {
+    {   
         if (collision.gameObject.CompareTag("Player") ||
             collision.gameObject.CompareTag("ResultArea"))
         {
             m_spriteRenderer.sprite = m_defaltSprite;
             m_particleSystem.Stop();
+        }
 
+        if (collision.gameObject.CompareTag("ResultArea"))
+        {
             if (m_jumpTween.IsPlaying())
             {
                 m_jumpTween.Pause();
