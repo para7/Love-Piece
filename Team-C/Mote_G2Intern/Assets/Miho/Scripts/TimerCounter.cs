@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using System;
@@ -10,25 +9,23 @@ public class TimerCounter : MonoBehaviour {
 
     public IObservable<int> OnTimeChanged { get { return timerSubject; } }
 
-    [SerializeField] private int m_Time;
+    private int m_Time;
 
     private void Start()
     {
-        StartCoroutine(TimerCoroutine());
-
         /// <summary>
         /// GameManagerからTimerを設定する
         /// </summary>
         m_Time = GameManager.Instance.getGameTime;
     }
 
-    IEnumerator TimerCoroutine()
+    public IEnumerator TimerCoroutine()
     {
         while (m_Time> 0)
         {
             m_Time--;
             timerSubject.OnNext(m_Time);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1f);
         }
         FadeManager.Instance.LoadScene("ResultScene", 2.0f);
     }

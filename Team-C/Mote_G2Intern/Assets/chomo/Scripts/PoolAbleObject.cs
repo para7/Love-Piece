@@ -74,7 +74,6 @@ public class PoolAbleObject : MonoBehaviour
         }
         else
         {
-            scoreText += "-";
             m_text.color = Color.blue;
         }
 
