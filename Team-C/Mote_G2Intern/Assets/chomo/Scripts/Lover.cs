@@ -164,6 +164,12 @@ public class Lover : MonoBehaviour
         {
             ScoreCounter.GetScore(-m_scoreValue);
         }
+
+        if (collision.gameObject.CompareTag("DeleteZone"))
+        {
+            LoverManager.Instance.RemoveList(this);
+            Destroy(this.gameObject);
+        }
     }
 
     #endregion

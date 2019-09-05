@@ -32,6 +32,11 @@ public class LoverManager : MonoBehaviour {
         m_Lovers.Add(_Lover);
     }
 
+    public void RemoveList(Lover _lover)
+    {
+        m_Lovers.Remove(_lover);
+    }
+
     // Update is called once per frame
     public void AllUpdate ()
     {
