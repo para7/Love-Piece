@@ -20,6 +20,8 @@ public class Lover : MonoBehaviour
 
     private bool m_isArea;
 
+    IDisposable m_StopLover;
+
     //呼び出し時に方向を代入させる
     [HideInInspector] public Vector2 m_moveDirection { get; set; }
 
@@ -64,6 +66,13 @@ public class Lover : MonoBehaviour
 
         m_isStopped = false;
         m_isArea = false;
+
+        m_StopLover = Observable.Timer(TimeSpan.FromSeconds(m_stopTime)).Subscribe(_ =>
+        {
+            m_isStopped = false;
+            SetMoveDirection(isApproach: false);
+            Debug.Log("終了");
+        });
     }
 
     public void LoverUpdate()
@@ -83,6 +92,7 @@ public class Lover : MonoBehaviour
     public void LoverAllStop()
     {
         _loverMover.Move(Vector2.zero);
+        m_StopLover.Dispose();
     }
 
     private void SetMoveDirection(bool isApproach)
@@ -115,11 +125,7 @@ public class Lover : MonoBehaviour
             /// <summary>
             /// m_stopTime秒経ったらfalseにする
             /// </summary>
-            Observable.Timer(TimeSpan.FromSeconds(m_stopTime)).Subscribe(_ =>
-            {
-                m_isStopped = false;
-                SetMoveDirection(isApproach: false);
-            }).AddTo(this);
+            m_StopLover.AddTo(this);
         }
 
         if (collision.gameObject.CompareTag("ResultArea"))
@@ -137,6 +143,11 @@ public class Lover : MonoBehaviour
 
         if (m_isStopped)
         {
+            m_StopLover.Dispose();
+            //m_StopLover.AddTo(this);
+
+            Debug.Log("更新");
+
             return;
         }
 
@@ -152,6 +163,8 @@ public class Lover : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            m_StopLover.AddTo(this);
+            Debug.Log("ああああああ");
             SetMoveDirection(isApproach: false);
         }
 
@@ -168,6 +181,7 @@ public class Lover : MonoBehaviour
         if (collision.gameObject.CompareTag("DeleteZone"))
         {
             LoverManager.Instance.RemoveList(this);
+            m_StopLover.Dispose();
             Destroy(this.gameObject);
         }
     }
