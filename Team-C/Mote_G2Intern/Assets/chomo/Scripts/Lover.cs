@@ -71,6 +71,7 @@ public class Lover : MonoBehaviour
         {
             m_isStopped = false;
             SetMoveDirection(isApproach: false);
+            Debug.Log("終了");
         });
     }
 
@@ -143,7 +144,9 @@ public class Lover : MonoBehaviour
         if (m_isStopped)
         {
             m_StopLover.Dispose();
-            m_StopLover.AddTo(this);
+            //m_StopLover.AddTo(this);
+
+            Debug.Log("更新");
 
             return;
         }
@@ -160,6 +163,8 @@ public class Lover : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            m_StopLover.AddTo(this);
+            Debug.Log("ああああああ");
             SetMoveDirection(isApproach: false);
         }
 
