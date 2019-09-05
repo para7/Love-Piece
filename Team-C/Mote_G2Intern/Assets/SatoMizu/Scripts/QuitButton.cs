@@ -1,11 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class TitleButtonScript : MonoBehaviour
-{
-    [SerializeField]    private string m_SceneName;
+public class QuitButton : MonoBehaviour {
     private SpriteRenderer m_spriteRender;
     private bool m_bReady;
 
@@ -28,9 +25,17 @@ public class TitleButtonScript : MonoBehaviour
 
         if (Input.anyKeyDown)
         {
-            this.GetComponent<AudioManager>().AudioPlay();
-            FadeManager.Instance.LoadScene(m_SceneName, 2.0f);
+            Quit();
         }
+    }
+
+    void Quit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE
+    UnityEngine.Application.Quit();
+#endif
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
