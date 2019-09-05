@@ -16,11 +16,11 @@ public class ObjectPoolManager : SingletonMonoBehaviour<ObjectPoolManager>
         this.OnDestroyAsObservable().Subscribe(_ => m_gameObjectPool.Dispose());
     }
 
-    private void OnGetScorePlayer(Vector3 objectPosition)
+    private void OnGetScorePlayer(Vector3 objectPosition, int score)
     {
         var gameObj = m_gameObjectPool.Rent();
 
-        gameObj.ShowScore(objectPosition)
+        gameObj.ShowScore(objectPosition, score)
             .Subscribe(__ =>
             {
                 m_gameObjectPool.Return(gameObj);

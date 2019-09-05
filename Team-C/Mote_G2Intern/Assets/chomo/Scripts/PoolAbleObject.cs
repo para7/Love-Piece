@@ -12,6 +12,8 @@ public class PoolAbleObject : MonoBehaviour
     private RectTransform m_canvasRect;
     private RectTransform m_rectTransform;
 
+    private Text m_text;
+
     [SerializeField]private Vector2 m_offset = new Vector2(0, 1.5f);
     private void Start()
     {
@@ -19,11 +21,14 @@ public class PoolAbleObject : MonoBehaviour
         m_canvasRect = m_canvas.GetComponent<RectTransform>();
 
         m_rectTransform = GetComponent<RectTransform>();
+        m_text = GetComponent<Text>();
     }
 
-    public IObservable<Unit> ShowScore(Vector3 position)
+    public IObservable<Unit> ShowScore(Vector3 position, int score)
     {
         SetDiplayPosition(position);
+
+        SetScoreProperty(score);
 
         transform.DOPunchScale(transform.localScale * 1.5f, 1f);
             
@@ -32,9 +37,10 @@ public class PoolAbleObject : MonoBehaviour
                 .ForEachAsync(_ => this.gameObject.SetActive(false));
     }
 
+   
     private void SetDiplayPosition(Vector2 targetPos)
     {
-        switch (m_canvas.renderMode)
+        switch (m_canvas.renderMode)//レンダーモードによって変える
         {
 
             case RenderMode.ScreenSpaceOverlay:
@@ -55,5 +61,25 @@ public class PoolAbleObject : MonoBehaviour
 
                 break;
         }
+    }
+
+    private void SetScoreProperty(int score)　//Loverごとの得点と色を設定
+    {
+        string scoreText = "";
+
+        if (score >= 0)
+        {
+            scoreText += "+";
+            m_text.color = Color.red;
+        }
+        else
+        {
+            scoreText += "-";
+            m_text.color = Color.blue;
+        }
+
+        scoreText += score.ToString();
+
+        m_text.text = scoreText;
     }
 }
