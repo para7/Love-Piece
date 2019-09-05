@@ -7,6 +7,7 @@ public class TitleStart : MonoBehaviour {
     [SerializeField] GameObject m_Character;
     [SerializeField] GameObject m_StartButton;
     [SerializeField] GameObject m_QuitButton;
+    [SerializeField] GameObject m_SetsumeiButton;
 
     // Use this for initialization
     void Start () {
@@ -17,11 +18,36 @@ public class TitleStart : MonoBehaviour {
 	void Update () {
         if (Input.anyKeyDown)
         {
-            Destroy(GameObject.Find("TitleLogo"));
+            if(GameObject.Find("TitleLogo"))
+            {
+                Destroy(GameObject.Find("TitleLogo"));
+            }
+            else
+            {
+                Debug.Log("ロゴなし");
+            }
+
+            if(GameObject.Find("LoversImage"))
+            {
+                GameObject.Find("LoversImage").SetActive(false);
+            }
+            else
+            {
+                Debug.Log("LoversImageなし");
+            }
+
             Destroy(gameObject);
-            Instantiate(m_Character);
-            Instantiate(m_StartButton);
-            Instantiate(m_QuitButton);
+
+            CreateInstance(m_Character);
+            CreateInstance(m_StartButton);
+            CreateInstance(m_QuitButton);
+            CreateInstance(m_SetsumeiButton);
         }
+    }
+
+    private void CreateInstance(GameObject _createObject)
+    {
+        GameObject newobject = Instantiate(_createObject);
+        newobject.name = _createObject.name;
     }
 }
