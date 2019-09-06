@@ -31,7 +31,7 @@ public class TimerView : MonoBehaviour {
 
         yield return new WaitForSeconds(1f);
 
-        m_TimeCounter.OnTimeChanged.Subscribe(time => m_CounterText.text = "残り時間:" + time.ToString());
+        m_TimeCounter.OnTimeChanged.Subscribe(time => m_CounterText.text = "残り" + time.ToString() + "秒");
 
         StartCoroutine(m_TimeCounter.TimerCoroutine());
     }
