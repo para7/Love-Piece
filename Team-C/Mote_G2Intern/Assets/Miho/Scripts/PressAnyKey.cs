@@ -4,8 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PressAnyKey : MonoBehaviour {
-	
-	void Update () {
+
+    void Start()
+    {
+        this.GetComponent<AudioManager>().AudioPlay(0);
+    }
+
+    void Update () {
         PressSceneTransition("TitleScene");
 	}
 

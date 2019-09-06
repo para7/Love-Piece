@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class ScoreEvaluation : MonoBehaviour {
 
     [SerializeField] private Text m_Text;
-    [SerializeField] private int m_MaxScore;
     [SerializeField] private Slider m_HeartSlider;
     [SerializeField] private ParticleSystem m_ParticleSystem;
     private int m_EvalutionValue;
@@ -18,14 +17,12 @@ public class ScoreEvaluation : MonoBehaviour {
 	
     private int EvaluationScore(int score)
     {
-        //設定した最大値に応じて分岐
-        var divisionValue = m_MaxScore / 4;
 
-        if (score >= m_MaxScore)
+        if (score>=2000)
             return 0;
-        else if (score >= divisionValue * 3)
+        else if (score >= 1300)
             return 1;
-        else if (score >= divisionValue * 2)
+        else if (score >= 600)
             return 2;
         else
             return 3;

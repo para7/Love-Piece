@@ -132,6 +132,7 @@ public class Lover : MonoBehaviour
         if (collision.gameObject.CompareTag("ResultArea"))
         {
             ObjectPoolManager.Instance.OnGetScorePlayer(transform.position, m_scoreValue);
+            gameObject.GetComponent<AudioManager>().AudioPlay(0);
         }
     }
 
