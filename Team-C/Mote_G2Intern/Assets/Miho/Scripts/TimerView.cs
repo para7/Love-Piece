@@ -20,6 +20,8 @@ public class TimerView : MonoBehaviour {
     {
         int countTime = 3;
 
+        yield return new WaitForSeconds(2f);
+
         while (countTime > 0)
         {
             m_CounterText.text = countTime.ToString();
