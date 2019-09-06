@@ -95,7 +95,7 @@ MonoBehaviour:
   m_moveSpeed: 200
   m_approachSpeed: 30
   m_stopTime: 5
-  m_scoreValue: 100
+  m_scoreValue: 500
   iniPos: 0
 --- !u!114 &114371571735347394
 MonoBehaviour:

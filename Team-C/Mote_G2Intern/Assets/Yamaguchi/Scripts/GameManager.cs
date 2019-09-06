@@ -31,6 +31,12 @@ public class GameManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
+
+        /// <summary>
+        /// フレームレートを60に固定
+        /// </summary>
+        Application.targetFrameRate = 60;
+
         m_CreateLover = GetComponent<IniCreateLover>();
 
         Observable.Timer(TimeSpan.FromSeconds(3.0)).Subscribe(_ =>

@@ -108,7 +108,7 @@ MonoBehaviour:
   m_moveSpeed: 150
   m_approachSpeed: 150
   m_stopTime: 3
-  m_scoreValue: 1
+  m_scoreValue: 200
   iniPos: 0
 --- !u!198 &198318134310018526
 ParticleSystem:
