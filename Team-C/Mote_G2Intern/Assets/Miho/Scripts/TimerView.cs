@@ -20,6 +20,8 @@ public class TimerView : MonoBehaviour {
     {
         int countTime = 3;
 
+        yield return new WaitForSeconds(2f);
+
         while (countTime > 0)
         {
             m_CounterText.text = countTime.ToString();
@@ -31,7 +33,7 @@ public class TimerView : MonoBehaviour {
 
         yield return new WaitForSeconds(1f);
 
-        m_TimeCounter.OnTimeChanged.Subscribe(time => m_CounterText.text = "残り時間:" + time.ToString());
+        m_TimeCounter.OnTimeChanged.Subscribe(time => m_CounterText.text = "残り" + time.ToString() + "秒");
 
         StartCoroutine(m_TimeCounter.TimerCoroutine());
     }
