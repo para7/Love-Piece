@@ -494,6 +494,26 @@ Prefab:
       propertyPath: m_Radius
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 212075680328441774, guid: bfc00c3f07aac054f8fe5f108403f333,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212075680328441774, guid: bfc00c3f07aac054f8fe5f108403f333,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.7877358
+      objectReference: {fileID: 0}
+    - target: {fileID: 212075680328441774, guid: bfc00c3f07aac054f8fe5f108403f333,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.95625085
+      objectReference: {fileID: 0}
+    - target: {fileID: 212075680328441774, guid: bfc00c3f07aac054f8fe5f108403f333,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0.6627451
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfc00c3f07aac054f8fe5f108403f333, type: 2}
   m_IsPrefabAsset: 0
