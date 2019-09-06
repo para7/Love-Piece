@@ -258,7 +258,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 2
   m_MinValue: 0
-  m_MaxValue: 40
+  m_MaxValue: 2000
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -5695,7 +5695,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Text: {fileID: 834832853}
-  m_MaxScore: 60
   m_HeartSlider: {fileID: 253128479}
   m_ParticleSystem: {fileID: 1585646604}
 --- !u!114 &1910005404
