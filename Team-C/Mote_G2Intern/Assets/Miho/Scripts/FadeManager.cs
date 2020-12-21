@@ -117,6 +117,9 @@ public class FadeManager : MonoBehaviour
 	/// <param name='interval'>暗転にかかる時間(秒)</param>
 	private IEnumerator TransScene (string scene, float interval)
 	{
+		var operation = SceneManager.LoadSceneAsync(scene);
+	        operation.allowSceneActivation = false;
+
 		//だんだん暗く .
 		this.isFading = true;
 		float time = 0;
@@ -127,7 +130,7 @@ public class FadeManager : MonoBehaviour
 		}
 
 		//シーン切替 .
-		SceneManager.LoadScene (scene);
+		operation.allowSceneActivation = true;
 
 		//だんだん明るく .
 		time = 0;
